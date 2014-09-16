@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +21,10 @@ class ViewController: UIViewController {
     }
     
     
-    func tableView(tableView: UITableView!, numberOfRowsInSection section:    Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section:    Int) -> Int {
         return 10
     }
-    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "MyTestCell")
         
         cell.textLabel?.text = "Row #\(indexPath.row)"
