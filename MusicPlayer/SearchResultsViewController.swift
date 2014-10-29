@@ -35,15 +35,15 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         let rowData: NSDictionary = self.tableData[indexPath.row] as NSDictionary
         
-        cell.textLabel?.text = rowData["trackName"] as? String
+        cell.textLabel.text = rowData["trackName"] as? String
         
         // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
         let urlString: NSString = rowData["artworkUrl60"] as NSString
-        let imgURL: NSURL = NSURL(string: urlString)
+        let imgURL: NSURL? = NSURL(string: urlString)
         
         // Download an NSData representation of the image at the URL
-        let imgData: NSData = NSData(contentsOfURL: imgURL)
-        cell.imageView?.image = UIImage(data: imgData)
+        let imgData = NSData(contentsOfURL: imgURL!)
+        cell.imageView.image = UIImage(data: imgData!)
         
         // Get the formatted price string for display in the subtitle
         let formattedPrice: NSString = rowData["formattedPrice"] as NSString
